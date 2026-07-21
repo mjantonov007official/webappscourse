@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Curriculum - Engineering Handbook</title>
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/interactions.css">
+    <link rel="stylesheet" href="css/git-interactions.css">
+    <link rel="stylesheet" href="css/responsive.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <a class="brand" href="index.html"><span class="brand-mark">EH</span><span>Engineering Handbook</span></a>
+      <nav class="header-nav" aria-label="Primary navigation">
+        <a href="handbook.html" aria-current="page">Curriculum</a>
+        <a href="lesson.html?lesson=how-an-http-request-works">Sample Lesson</a>
+        <a href="commands.html">Commands</a>
+        <a href="atlas-commerce.html">Atlas Commerce</a>
+        <button class="link-button js-search-open" type="button">Search</button>
+      </nav>
+      <button class="button button-primary js-continue" type="button">Continue Learning</button>
+    </header>
+
+    <main id="main" class="curriculum-page">
+      <section class="page-intro">
+        <p class="eyebrow">FIRST EDITION CURRICULUM</p>
+        <h1>Engineering Handbook Curriculum</h1>
+        <p>The complete roadmap is organized from foundations to production systems, AI-assisted engineering, accessibility, legal awareness, and career growth. Planned lessons are labeled honestly until their full interactive bodies are authored.</p>
+        <div class="stats-row">
+          <div><strong data-part-count>16</strong><span>learning parts</span></div>
+          <div><strong data-chapter-count>40</strong><span>chapters</span></div>
+          <div><strong data-lesson-count>145</strong><span>roadmap lessons</span></div>
+          <div><strong data-estimated-time>0h</strong><span>estimated curriculum time</span></div>
+        </div>
+        <div class="overall-progress">
+          <div class="progress-label">
+            <span data-overall-progress-text>0 of 9 lessons completed</span>
+            <span data-overall-percent>0%</span>
+          </div>
+          <div class="progress" role="progressbar" aria-label="Overall handbook progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <span data-overall-progress-bar></span>
+          </div>
+        </div>
+        <div class="roadmap-note">
+          <strong>Curriculum roadmap:</strong> <span data-roadmap-count>144 roadmap lessons</span>.
+          <strong>Available now:</strong> <span data-complete-count>1 complete interactive lesson</span>.
+          <a href="atlas-commerce.html">Atlas Commerce reference</a>
+        </div>
+      </section>
+
+      <section class="curriculum-controls" data-curriculum-controls aria-label="Curriculum search and filters">
+        <div>
+          <label class="field-label" for="curriculum-search">Search curriculum metadata</label>
+          <div class="search-row">
+            <input id="curriculum-search" class="search-input" type="search" data-curriculum-search placeholder="Search titles, summaries, topics, objectives, or Atlas Commerce">
+            <button class="button button-secondary" type="button" data-clear-search>Clear</button>
+          </div>
+          <p class="result-count" aria-live="polite" data-result-count>0 matching lessons</p>
+        </div>
+        <fieldset class="filter-grid">
+          <legend>Filters</legend>
+          <label><input type="checkbox" value="all" data-filter checked> All lessons</label>
+          <label><input type="checkbox" value="complete-content" data-filter> Complete content</label>
+          <label><input type="checkbox" value="planned-content" data-filter> Planned content</label>
+          <label><input type="checkbox" value="beginner" data-filter> Beginner</label>
+          <label><input type="checkbox" value="intermediate" data-filter> Intermediate</label>
+          <label><input type="checkbox" value="advanced" data-filter> Advanced</label>
+          <label><input type="checkbox" value="completed" data-filter> Completed</label>
+          <label><input type="checkbox" value="in-progress" data-filter> In progress</label>
+          <label><input type="checkbox" value="not-started" data-filter> Not started</label>
+        </fieldset>
+      </section>
+
+      <section class="curriculum-shell" data-curriculum-list aria-label="Curriculum lessons"></section>
+    </main>
+
+    <div class="modal-backdrop" data-search-modal hidden>
+      <section class="search-modal" role="dialog" aria-modal="true" aria-labelledby="search-title">
+        <div class="modal-header">
+          <h2 id="search-title">Search handbook</h2>
+          <button class="icon-button js-search-close" type="button" aria-label="Close search">x</button>
+        </div>
+        <label class="field-label" for="site-search">Search curriculum lessons</label>
+        <input id="site-search" class="search-input" type="search" placeholder="Try HTTP, DNS, or AI">
+        <div class="search-results" data-search-results></div>
+      </section>
+    </div>
+
+    <script src="data/curriculum.js" defer></script>
+    <script src="data/sample-lessons.js" defer></script>
+    <script src="data/lessons/what-a-computer-actually-does.js" defer></script>
+    <script src="data/lessons/hardware-and-software.js" defer></script>
+    <script src="data/lessons/cpu-memory-and-storage.js" defer></script>
+    <script src="data/lessons/files-folders-and-data.js" defer></script>
+    <script src="data/lessons/processes-applications-and-services.js" defer></script>
+    <script src="data/lessons/local-computers-and-remote-servers.js" defer></script>
+    <script src="data/lessons/how-an-http-request-works.js" defer></script>
+    <script src="data/lessons/phase4-terminal-lessons.js" defer></script>
+    <script src="data/lessons/phase5-git-lessons.js" defer></script>
+    <script src="js/curriculum-data.js" defer></script>
+    <script src="js/curriculum-validator.js" defer></script>
+    <script src="js/storage.js" defer></script>
+    <script src="js/navigation.js" defer></script>
+    <script src="js/curriculum-renderer.js" defer></script>
+    <script src="js/progress.js" defer></script>
+    <script src="js/app.js" defer></script>
+  </body>
+</html>

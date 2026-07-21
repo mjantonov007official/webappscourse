@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Modern Web Application Engineering in the AI Era</title>
+    <meta name="description" content="A static interactive engineering handbook for modern web application systems thinking.">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/interactions.css">
+    <link rel="stylesheet" href="css/git-interactions.css">
+    <link rel="stylesheet" href="css/responsive.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Engineering Handbook home">
+        <span class="brand-mark">EH</span>
+        <span>Engineering Handbook</span>
+      </a>
+      <nav class="header-nav" aria-label="Primary navigation">
+        <a href="handbook.html">Curriculum</a>
+        <a href="lesson.html?lesson=how-an-http-request-works">Sample Lesson</a>
+        <a href="commands.html">Commands</a>
+        <a href="atlas-commerce.html">Atlas Commerce</a>
+        <button class="link-button js-search-open" type="button">Search</button>
+      </nav>
+      <a class="button button-primary" href="lesson.html?lesson=how-an-http-request-works">Start Learning</a>
+    </header>
+
+    <main id="main">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">INTERACTIVE ENGINEERING HANDBOOK</p>
+          <h1>Modern Web Application Engineering in the AI Era</h1>
+          <p class="lede">Learn how modern web applications work as complete systems.</p>
+          <p>This handbook teaches engineering thinking: architecture, deployment, debugging, operations, security awareness, scalability, and AI-assisted development. It is not a programming syntax course.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="lesson.html?lesson=how-an-http-request-works">Start Learning</a>
+            <a class="button button-secondary" href="handbook.html">Explore Curriculum</a>
+          </div>
+        </div>
+        <div class="handbook-preview" aria-label="Handbook interface preview">
+          <div class="preview-sidebar">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <div class="preview-reader">
+            <div class="preview-bar"></div>
+            <div class="preview-line wide"></div>
+            <div class="preview-line"></div>
+            <div class="preview-flow">
+              <span>Browser</span>
+              <span>DNS</span>
+              <span>Server</span>
+              <span>Database</span>
+            </div>
+            <div class="preview-code"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">FIRST EDITION ROADMAP</p>
+          <h2>A complete learning path, released one authored lesson at a time.</h2>
+          <p>The roadmap is complete, while fully interactive lessons are clearly labeled as available content.</p>
+        </div>
+        <div class="stats-row">
+          <div><strong data-part-count>16</strong><span>learning parts</span></div>
+          <div><strong data-chapter-count>40</strong><span>chapters</span></div>
+          <div><strong data-roadmap-count>144 roadmap lessons</strong><span>planned structure</span></div>
+          <div><strong data-complete-count>7 complete interactive lessons</strong><span>available now</span></div>
+        </div>
+      </section>
+
+      <section class="section split-section">
+        <div>
+          <p class="eyebrow">FIRST COMPLETE CHAPTER</p>
+          <h2>Chapter 1.1 is ready to study end to end.</h2>
+          <p data-first-chapter-status>The first foundation chapter has six authored lessons with reusable activities, labs, quizzes, and progress tracking.</p>
+        </div>
+        <div class="quick-list" data-first-chapter-list aria-label="First complete chapter lessons"></div>
+      </section>
+
+      <section class="section" data-bookmark-section hidden>
+        <div class="section-heading">
+          <p class="eyebrow">BOOKMARKS</p>
+          <h2>Saved lessons.</h2>
+        </div>
+        <div class="bookmark-list" data-bookmark-list></div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">HANDBOOK OVERVIEW</p>
+          <h2>Study the systems behind production software.</h2>
+        </div>
+        <div class="topic-grid">
+          <article class="card"><h3>System fundamentals</h3><p>Computers, networks, operating systems, and engineering tradeoffs.</p></article>
+          <article class="card"><h3>Web architecture</h3><p>Clients, servers, protocols, request flows, and application boundaries.</p></article>
+          <article class="card"><h3>Databases</h3><p>Data modeling, queries, transactions, caching, and operational behavior.</p></article>
+          <article class="card"><h3>APIs</h3><p>Contracts, versioning, integration design, errors, and observability.</p></article>
+          <article class="card"><h3>Security</h3><p>Practical awareness without turning the handbook into a security system.</p></article>
+          <article class="card"><h3>Deployment</h3><p>Static hosts, servers, reverse proxies, release habits, and rollback thinking.</p></article>
+          <article class="card"><h3>Operations</h3><p>Logs, metrics, incidents, monitoring, and maintenance work.</p></article>
+          <article class="card"><h3>AI-assisted engineering</h3><p>Prompting, reviewing, debugging, and preserving human judgment.</p></article>
+        </div>
+      </section>
+
+      <section class="section split-section">
+        <div>
+          <p class="eyebrow">LEARNING PHILOSOPHY</p>
+          <h2>Understand before implementation.</h2>
+          <p>AI can accelerate investigation, drafting, and iteration. The engineer still owns judgment: what to measure, what to trust, what to reject, and what tradeoff is acceptable.</p>
+        </div>
+        <ol class="workflow" aria-label="Engineering workflow">
+          <li>Understand</li>
+          <li>Design</li>
+          <li>Review</li>
+          <li>Test</li>
+          <li>Deploy</li>
+          <li>Maintain</li>
+        </ol>
+      </section>
+
+      <section class="section split-section">
+        <div>
+          <p class="eyebrow">CONTINUOUS REFERENCE SYSTEM</p>
+          <h2>Meet Atlas Commerce.</h2>
+          <p>Atlas Commerce is the fictional e-commerce platform used throughout the handbook to connect ideas to realistic production behavior.</p>
+          <a class="button button-secondary" href="atlas-commerce.html">Explore Atlas Commerce</a>
+        </div>
+        <div class="card atlas-list">
+          <span>HTTP requests</span>
+          <span>Shopping carts</span>
+          <span>Payments</span>
+          <span>Queues</span>
+          <span>Redis</span>
+          <span>Deployment</span>
+          <span>Monitoring</span>
+          <span>Scaling</span>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">INTERACTIVE LEARNING PREVIEW</p>
+          <h2>Reusable lesson pieces for Phase 2 and beyond.</h2>
+        </div>
+        <div class="feature-grid">
+          <div class="feature-card">Architecture diagrams</div>
+          <div class="feature-card">Step-by-step flows</div>
+          <div class="feature-card">Terminal commands</div>
+          <div class="feature-card">Pseudocode</div>
+          <div class="feature-card">Mini challenges</div>
+          <div class="feature-card">Quizzes</div>
+          <div class="feature-card">Progress tracking</div>
+          <div class="feature-card">Completed checkmarks</div>
+        </div>
+      </section>
+
+      <section class="section split-section">
+        <div>
+          <p class="eyebrow">LEARN THE TERMINAL SAFELY</p>
+          <h2>Commands with explanations, simulated output, and risk labels.</h2>
+          <p>Part 2 now has three complete chapters covering operating systems, shells, files, processes, logs, SSH, and dependency tools through real commands that are explained before they are shown. Browser activities simulate output and never execute shell commands.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="lesson.html?lesson=why-engineers-use-the-terminal">Featured Terminal Lesson</a>
+            <a class="button button-secondary" href="commands.html">Open Command Glossary</a>
+          </div>
+        </div>
+        <div class="quick-list">
+          <div class="quick-list-item"><strong data-part2-progress>Operating Systems and the Terminal</strong><span>Part 2 authored lessons</span></div>
+          <div class="quick-list-item"><strong data-overall-progress-text>Interactive lessons completed: 0 of 26</strong><span data-overall-percent>0%</span></div>
+          <div class="quick-list-item"><strong>Safe-use labels</strong><span>Read-only, destructive, privileged, network, and package risks</span></div>
+          <div class="quick-list-item"><strong>Server examples</strong><span>SSH, logs, services, disk, memory, and package tools</span></div>
+        </div>
+      </section>
+
+      <section class="section split-section">
+        <div>
+          <p class="eyebrow">LEARN GIT AS A SYSTEM</p>
+          <h2>Working tree, staging area, commits, branches, remotes, and review.</h2>
+          <p>Part 3 is available with Git and GitHub lessons that teach repository state, recovery, collaboration, releases, CI, and AI-assisted workflows without turning Git into command memorization.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="lesson.html?lesson=repositories-and-working-trees">Open Git Simulator Lesson</a>
+            <a class="button button-secondary" href="commands.html">Browse Git Commands</a>
+          </div>
+        </div>
+        <div class="quick-list">
+          <div class="quick-list-item"><strong data-part3-progress>Git, GitHub, and Managing Change</strong><span>Part 3 authored lessons</span></div>
+          <div class="quick-list-item"><strong>Repository state model</strong><span>Working directory -> staging area -> local repository -> remote repository</span></div>
+          <div class="quick-list-item"><strong>Recovery-first guidance</strong><span>Restore, revert, reflog, shared-history warnings, and secret response</span></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="continue-card" data-continue-card>
+          <div>
+            <p class="eyebrow">CONTINUE LEARNING</p>
+            <h2 data-continue-title>Start your first lesson.</h2>
+            <p data-continue-meta>Part 2 - Internet and the Web</p>
+          </div>
+          <div class="continue-progress">
+            <div class="progress-label"><span data-continue-progress-text>0% complete</span></div>
+            <div class="progress" role="progressbar" aria-label="Continue learning progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <span data-continue-progress-bar></span>
+            </div>
+            <button class="button button-primary js-continue" type="button">Continue</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <strong>Modern Web Application Engineering in the AI Era</strong>
+        <p>A static HTML, CSS, and JavaScript handbook foundation.</p>
+      </div>
+      <nav aria-label="Footer navigation">
+        <a href="handbook.html">Curriculum</a>
+        <a href="lesson.html?lesson=how-an-http-request-works">Start Learning</a>
+      </nav>
+      <p>&copy; 2026 Engineering Handbook.</p>
+    </footer>
+
+    <div class="modal-backdrop" data-search-modal hidden>
+      <section class="search-modal" role="dialog" aria-modal="true" aria-labelledby="search-title">
+        <div class="modal-header">
+          <h2 id="search-title">Search handbook</h2>
+          <button class="icon-button js-search-close" type="button" aria-label="Close search">x</button>
+        </div>
+        <label class="field-label" for="site-search">Search curriculum lessons</label>
+        <input id="site-search" class="search-input" type="search" placeholder="Try HTTP, DNS, or AI">
+        <div class="search-results" data-search-results></div>
+      </section>
+    </div>
+
+    <script src="data/curriculum.js" defer></script>
+    <script src="data/sample-lessons.js" defer></script>
+    <script src="data/lessons/what-a-computer-actually-does.js" defer></script>
+    <script src="data/lessons/hardware-and-software.js" defer></script>
+    <script src="data/lessons/cpu-memory-and-storage.js" defer></script>
+    <script src="data/lessons/files-folders-and-data.js" defer></script>
+    <script src="data/lessons/processes-applications-and-services.js" defer></script>
+    <script src="data/lessons/local-computers-and-remote-servers.js" defer></script>
+    <script src="data/lessons/how-an-http-request-works.js" defer></script>
+    <script src="data/lessons/phase4-terminal-lessons.js" defer></script>
+    <script src="data/lessons/phase5-git-lessons.js" defer></script>
+    <script src="data/command-glossary.js" defer></script>
+    <script src="data/git-command-glossary.js" defer></script>
+    <script src="js/curriculum-data.js" defer></script>
+    <script src="js/curriculum-validator.js" defer></script>
+    <script src="js/storage.js" defer></script>
+    <script src="js/navigation.js" defer></script>
+    <script src="js/bookmark-manager.js" defer></script>
+    <script src="js/app.js" defer></script>
+  </body>
+</html>

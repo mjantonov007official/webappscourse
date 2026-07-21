@@ -1,0 +1,63 @@
+@media (max-width: 1100px) {
+  .topic-grid, .feature-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lesson-layout { grid-template-columns: 280px minmax(0, 1fr); }
+  .lesson-toc { display: none; }
+}
+@media (max-width: 860px) {
+  .site-header { flex-wrap: wrap; padding: 0.8rem 4vw; }
+  .header-nav { order: 3; width: 100%; justify-content: space-between; }
+  .hero, .split-section, .continue-card, .lesson-hero { grid-template-columns: 1fr; }
+  .hero { min-height: auto; padding-top: 4rem; }
+  .handbook-preview { min-height: 330px; }
+  .stats-row, .curriculum-controls { grid-template-columns: 1fr; }
+  .lesson-row { grid-template-columns: 1fr; }
+  .mobile-lesson-header {
+    position: sticky;
+    top: 0;
+    z-index: 35;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.8rem;
+    padding: 0.65rem 1rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--background);
+  }
+  .lesson-layout { display: block; }
+  .lesson-sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    z-index: 45;
+    width: min(330px, 86vw);
+    transform: translateX(-105%);
+    transition: transform 180ms ease;
+    box-shadow: var(--shadow);
+  }
+  .lesson-sidebar.open { transform: translateX(0); }
+  .js-drawer-close { display: inline-grid; }
+  .drawer-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    background: rgba(0, 0, 0, 0.58);
+  }
+  .lesson-main { padding: 1.2rem 1rem 3rem; }
+  .lesson-content { max-width: none; font-size: 16px; }
+}
+@media (max-width: 560px) {
+  h1 { font-size: 2.15rem; }
+  .site-header > .button { width: 100%; }
+  .hero-actions, .prev-next { flex-direction: column; }
+  .button { width: 100%; }
+  .topic-grid, .feature-grid, .workflow, .atlas-list, .definition-grid, .prompt-grid, .step-flow, .related-grid {
+    grid-template-columns: 1fr;
+  }
+  .diagram-row, .search-row { grid-template-columns: 1fr; }
+  .lesson-meta-list .topic-chip:nth-of-type(n+4),
+  .lesson-row-summary { display: none; }
+  .handbook-preview { grid-template-columns: 84px 1fr; }
+  .preview-flow { grid-template-columns: 1fr; }
+  .section { padding: 3rem 1rem; }
+  .site-footer { flex-direction: column; }
+  .modal-backdrop { padding-top: 1rem; }
+}

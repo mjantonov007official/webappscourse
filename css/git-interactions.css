@@ -1,0 +1,33 @@
+.branch-graph .comparison-table,
+.commit-timeline .comparison-table,
+.merge-simulator .comparison-table,
+.conflict-resolver .comparison-table,
+.remote-sync-explorer .comparison-table,
+.pull-request-workflow .comparison-table,
+.code-review-scenario .comparison-table,
+.release-timeline .comparison-table,
+.secret-exposure-incident .comparison-table,
+.ci-workflow-visualizer .comparison-table,
+.ai-diff-review .comparison-table {
+  min-width: 640px;
+}
+
+.git-practice-simulator .step-controls {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.git-practice-simulator .button {
+  width: 100%;
+}
+
+.conflict-resolver .comparison-table td:first-child,
+.ai-diff-review .comparison-table td:first-child {
+  font-family: var(--font-mono);
+}
+
+@media (max-width: 700px) {
+  .git-practice-simulator .step-controls {
+    grid-template-columns: 1fr;
+  }
+}

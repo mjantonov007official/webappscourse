@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Command Glossary - Engineering Handbook</title>
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/interactions.css">
+    <link rel="stylesheet" href="css/git-interactions.css">
+    <link rel="stylesheet" href="css/responsive.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <a class="brand" href="index.html"><span class="brand-mark">EH</span><span>Engineering Handbook</span></a>
+      <nav class="header-nav" aria-label="Primary navigation">
+        <a href="handbook.html">Curriculum</a>
+        <a href="commands.html" aria-current="page">Commands</a>
+        <a href="atlas-commerce.html">Atlas Commerce</a>
+        <button class="link-button js-search-open" type="button">Search</button>
+      </nav>
+      <button class="button button-primary js-continue" type="button">Continue Learning</button>
+    </header>
+
+    <main id="main" class="curriculum-page">
+      <section class="page-intro">
+        <p class="eyebrow">COMMAND GLOSSARY</p>
+        <h1>Terminal Commands Introduced So Far</h1>
+        <p>This glossary supports the lessons. It is not a replacement for them. Commands are grouped with purpose, risk labels, platforms, examples, and lesson links.</p>
+      </section>
+      <section class="curriculum-controls" aria-label="Command glossary search">
+        <div>
+          <label class="field-label" for="command-search">Search commands</label>
+          <input id="command-search" class="search-input" type="search" data-command-search placeholder="Try grep, ssh, npm, or destructive">
+        </div>
+        <div class="roadmap-note">
+          <strong>Risk labels:</strong> Read-only, low-risk modification, destructive, privileged, network access, and package installation.
+        </div>
+      </section>
+      <section class="command-glossary" data-command-glossary></section>
+    </main>
+
+    <div class="modal-backdrop" data-search-modal hidden>
+      <section class="search-modal" role="dialog" aria-modal="true" aria-labelledby="search-title">
+        <div class="modal-header">
+          <h2 id="search-title">Search handbook</h2>
+          <button class="icon-button js-search-close" type="button" aria-label="Close search">x</button>
+        </div>
+        <label class="field-label" for="site-search">Search curriculum lessons</label>
+        <input id="site-search" class="search-input" type="search" placeholder="Try HTTP, DNS, or SSH">
+        <div class="search-results" data-search-results></div>
+      </section>
+    </div>
+
+    <script src="data/curriculum.js" defer></script>
+    <script src="data/lessons/phase4-terminal-lessons.js" defer></script>
+    <script src="data/lessons/phase5-git-lessons.js" defer></script>
+    <script src="data/command-glossary.js" defer></script>
+    <script src="data/git-command-glossary.js" defer></script>
+    <script src="js/curriculum-data.js" defer></script>
+    <script src="js/storage.js" defer></script>
+    <script src="js/navigation.js" defer></script>
+    <script src="js/command-glossary.js" defer></script>
+    <script src="js/app.js" defer></script>
+  </body>
+</html>

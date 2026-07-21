@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Atlas Commerce - Engineering Handbook</title>
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <a class="brand" href="index.html"><span class="brand-mark">EH</span><span>Engineering Handbook</span></a>
+      <nav class="header-nav" aria-label="Primary navigation">
+        <a href="handbook.html">Curriculum</a>
+        <a href="lesson.html?lesson=how-an-http-request-works">Sample Lesson</a>
+        <a href="atlas-commerce.html" aria-current="page">Atlas Commerce</a>
+        <button class="link-button js-search-open" type="button">Search</button>
+      </nav>
+      <button class="button button-primary js-continue" type="button">Continue Learning</button>
+    </header>
+
+    <main id="main" class="curriculum-page">
+      <section class="page-intro">
+        <p class="eyebrow">CONTINUOUS REFERENCE SYSTEM</p>
+        <h1>Atlas Commerce</h1>
+        <p>Atlas Commerce is a fictional production-style e-commerce platform used throughout the handbook. It is not an application the learner must build. It exists to show how engineering concepts behave inside a realistic system.</p>
+      </section>
+
+      <section class="section split-section atlas-page-section">
+        <div>
+          <h2>What Atlas Commerce Includes</h2>
+          <p>The same reference platform appears across lessons so concepts can connect: product catalog, customer accounts, checkout, orders, inventory, payments, email, background jobs, Redis, caching, monitoring, analytics, fraud signals, and support workflows.</p>
+        </div>
+        <div class="card atlas-list">
+          <span>Product catalog</span><span>Shopping cart</span><span>Checkout</span><span>Orders</span>
+          <span>Inventory</span><span>Payments</span><span>Email</span><span>Queues</span>
+          <span>Redis</span><span>Monitoring</span><span>Analytics</span><span>Support</span>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">CONCEPTUAL ARCHITECTURE</p>
+          <h2>A reference system, not a build assignment.</h2>
+        </div>
+        <div class="atlas-architecture" aria-label="Atlas Commerce conceptual architecture diagram">
+          <div class="diagram-node">Customer Browser</div>
+          <div class="diagram-arrow">request and response</div>
+          <div class="diagram-node">CDN / Reverse Proxy</div>
+          <div class="diagram-arrow">routes traffic</div>
+          <div class="diagram-node wide-node">Atlas Commerce Application</div>
+          <div class="diagram-row">
+            <div class="diagram-node">Database</div>
+            <div class="diagram-node">Cache</div>
+            <div class="diagram-node">Queue Workers</div>
+          </div>
+          <div class="diagram-arrow">integrations and background workflows</div>
+          <div class="diagram-row">
+            <div class="diagram-node">Payments</div>
+            <div class="diagram-node">Email</div>
+            <div class="diagram-node">Storage</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="modal-backdrop" data-search-modal hidden>
+      <section class="search-modal" role="dialog" aria-modal="true" aria-labelledby="search-title">
+        <div class="modal-header">
+          <h2 id="search-title">Search handbook</h2>
+          <button class="icon-button js-search-close" type="button" aria-label="Close search">x</button>
+        </div>
+        <label class="field-label" for="site-search">Search curriculum lessons</label>
+        <input id="site-search" class="search-input" type="search" placeholder="Try payments, queues, or monitoring">
+        <div class="search-results" data-search-results></div>
+      </section>
+    </div>
+
+    <script src="data/curriculum.js" defer></script>
+    <script src="data/sample-lessons.js" defer></script>
+    <script src="js/curriculum-data.js" defer></script>
+    <script src="js/curriculum-validator.js" defer></script>
+    <script src="js/storage.js" defer></script>
+    <script src="js/navigation.js" defer></script>
+    <script src="js/app.js" defer></script>
+  </body>
+</html>

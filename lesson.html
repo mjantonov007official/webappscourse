@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>How an HTTP Request Works - Engineering Handbook</title>
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/lesson.css">
+    <link rel="stylesheet" href="css/interactions.css">
+    <link rel="stylesheet" href="css/git-interactions.css">
+    <link rel="stylesheet" href="css/quiz.css">
+    <link rel="stylesheet" href="css/responsive.css">
+  </head>
+  <body data-lesson-id="lesson-http-request">
+    <a class="skip-link" href="#lesson-main">Skip to lesson</a>
+    <header class="mobile-lesson-header">
+      <button class="icon-button js-drawer-open" type="button" aria-label="Open handbook navigation" aria-controls="lesson-sidebar" aria-expanded="false">☰</button>
+      <a class="brand" href="index.html"><span class="brand-mark">EH</span><span>Engineering Handbook</span></a>
+      <span class="mobile-progress-text" data-lesson-progress-text>0%</span>
+    </header>
+    <div class="drawer-backdrop js-drawer-backdrop" hidden></div>
+
+    <div class="lesson-layout">
+      <aside id="lesson-sidebar" class="lesson-sidebar" aria-label="Handbook navigation">
+        <div class="sidebar-header">
+          <a class="brand" href="index.html"><span class="brand-mark">EH</span><span>Engineering Handbook</span></a>
+          <button class="icon-button js-drawer-close" type="button" aria-label="Close navigation">x</button>
+        </div>
+        <div class="sidebar-progress">
+          <div class="progress-label"><span data-overall-progress-text>0 of 9 lessons completed</span><span data-overall-percent>0%</span></div>
+          <div class="progress" role="progressbar" aria-label="Overall handbook progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span data-overall-progress-bar></span></div>
+        </div>
+        <nav data-sidebar-nav></nav>
+        <button class="button button-secondary full-width js-continue" type="button">Continue Learning</button>
+      </aside>
+
+      <main id="lesson-main" class="lesson-main">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span><a href="handbook.html">Curriculum</a><span>/</span><span data-dynamic-title>How an HTTP Request Works</span></nav>
+        <section class="lesson-hero">
+          <div>
+            <p class="eyebrow"><span data-dynamic-part>PART 6 - HOW THE WEB WORKS</span></p>
+            <p class="lesson-kicker" data-dynamic-chapter>Chapter 6.1 - Browser and HTTP Foundations</p>
+            <h1 data-dynamic-title>How an HTTP Request Works</h1>
+            <p class="lesson-summary" data-dynamic-summary>A complete page load is a coordinated journey through DNS, networks, web servers, applications, data stores, and the browser.</p>
+            <div class="meta-row"><span class="badge" data-dynamic-difficulty>beginner</span><span class="badge" data-dynamic-time>35m</span><button class="button button-secondary" type="button" data-bookmark-button aria-pressed="false">Bookmark</button></div>
+          </div>
+          <div class="lesson-progress-panel">
+            <div class="progress-label"><span>Lesson Progress</span><span data-lesson-progress-text>0%</span></div>
+            <div class="progress" role="progressbar" aria-label="Lesson progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span data-lesson-progress-bar></span></div>
+            <button class="button button-primary js-mark-complete" type="button">Mark Lesson Complete</button>
+            <button class="button button-subtle js-mark-incomplete" type="button">Mark incomplete</button>
+            <p class="success-message" data-complete-message hidden>Lesson marked complete.</p>
+          </div>
+        </section>
+
+        <article class="lesson-content">
+          <section id="introduction" class="lesson-section" data-section-title="Introduction">
+            <h2>1. Introduction</h2>
+            <p>When a user enters a website address or clicks a link, the browser does not magically receive a finished page. It starts a structured conversation with several systems that each have a narrow job.</p>
+            <p>A simple product page load may require name resolution, secure network connection setup, web server routing, application logic, database reads, cache checks, and browser rendering. The work feels instant when each part behaves well.</p>
+          </section>
+
+          <section id="learning-objectives" class="lesson-section" data-section-title="Learning Objectives">
+            <h2>2. Learning Objectives</h2>
+            <ul class="check-list">
+              <li>Explain the journey of a browser request.</li>
+              <li>Identify the responsibility of DNS, the server, the application, and the database.</li>
+              <li>Recognize common failure points.</li>
+              <li>Explain how an e-commerce product page uses this flow.</li>
+            </ul>
+          </section>
+
+          <section id="real-world-scenario" class="lesson-section" data-section-title="Real-World Scenario">
+            <h2>3. Real-World Scenario</h2>
+            <p>A customer opens an Atlas Commerce product page to view a laptop.</p>
+            <pre class="code-block"><code>https://atlas-commerce.example/products/engineering-laptop</code></pre>
+          </section>
+
+          <section id="why-this-exists" class="lesson-section" data-section-title="Why This Exists">
+            <h2>4. Why This Exists</h2>
+            <p>The browser cannot directly know where every website lives, and it cannot retrieve application data without shared protocols. DNS gives names a way to resolve to network locations. HTTP gives clients and servers a shared message format.</p>
+          </section>
+
+          <section id="problem-it-solves" class="lesson-section" data-section-title="Problem It Solves">
+            <h2>5. Problem It Solves</h2>
+            <p>HTTP creates a predictable communication system. A client sends a request with a method, path, headers, and sometimes a body. A server returns a response with a status code, headers, and content.</p>
+          </section>
+
+          <section id="key-concepts" class="lesson-section" data-section-title="Key Concepts">
+            <h2>6. Key Concepts</h2>
+            <div class="definition-grid" data-accordion-group>
+              <details class="definition-card"><summary>Client</summary><p>The software making a request, often a browser or mobile app.</p></details>
+              <details class="definition-card"><summary>Server</summary><p>The system that receives requests and returns responses.</p></details>
+              <details class="definition-card"><summary>DNS</summary><p>The naming system that helps translate domains into network addresses.</p></details>
+              <details class="definition-card"><summary>IP address</summary><p>A network address used to reach a machine or service.</p></details>
+              <details class="definition-card"><summary>HTTP</summary><p>The protocol browsers and servers use to exchange web messages.</p></details>
+              <details class="definition-card"><summary>HTTPS</summary><p>HTTP protected by encryption and identity checks through TLS.</p></details>
+              <details class="definition-card"><summary>Request</summary><p>The message sent by a client asking for a resource or action.</p></details>
+              <details class="definition-card"><summary>Response</summary><p>The message returned by a server, including status and content.</p></details>
+              <details class="definition-card"><summary>Web server</summary><p>The front service, such as Nginx, that receives and routes HTTP traffic.</p></details>
+              <details class="definition-card"><summary>Application</summary><p>The business logic that decides what the request means and what to return.</p></details>
+              <details class="definition-card"><summary>Database</summary><p>The storage system that holds product, account, order, and other durable data.</p></details>
+            </div>
+          </section>
+
+          <section id="interactive-request-flow" class="lesson-section" data-section-title="Request Flow">
+            <h2>7. Interactive Request Flow</h2>
+            <p>Select a step to inspect what is happening, why it matters, what can fail, and how an engineer may investigate it.</p>
+            <div class="step-flow" data-request-flow></div>
+            <div class="flow-detail" data-flow-detail tabindex="-1"></div>
+          </section>
+
+          <section id="step-by-step-explanation" class="lesson-section" data-section-title="Step-by-Step">
+            <h2>8. Step-by-Step Explanation</h2>
+            <ol class="numbered-panels">
+              <li><strong>Browser starts the request.</strong> It parses the URL and prepares to find the destination.</li>
+              <li><strong>DNS resolves the domain.</strong> The domain becomes an address the network can route toward.</li>
+              <li><strong>Connection is established.</strong> The browser and server create a reliable path for messages.</li>
+              <li><strong>TLS protects the exchange.</strong> HTTPS helps keep data private while in transit.</li>
+              <li><strong>The web server receives the request.</strong> It may serve static files or forward dynamic work to the application.</li>
+              <li><strong>The application asks for data.</strong> Product details, stock, and reviews may come from databases or caches.</li>
+              <li><strong>The response returns.</strong> The browser receives content and starts rendering the page.</li>
+            </ol>
+          </section>
+
+          <section id="architecture-diagram" class="lesson-section" data-section-title="Architecture Diagram">
+            <h2>9. Architecture Diagram</h2>
+            <div class="architecture-diagram" aria-label="HTTP request architecture diagram">
+              <div class="diagram-node">Customer Browser</div>
+              <div class="diagram-arrow">request ↓ / response ↑</div>
+              <div class="diagram-node">DNS</div>
+              <div class="diagram-arrow">name resolution</div>
+              <div class="diagram-node">Internet / Network</div>
+              <div class="diagram-arrow">secure traffic</div>
+              <div class="diagram-node">Nginx</div>
+              <div class="diagram-arrow">route dynamic work</div>
+              <div class="diagram-node">Web Application</div>
+              <div class="diagram-arrow">query data</div>
+              <div class="diagram-node">Database</div>
+            </div>
+          </section>
+
+          <section id="pseudocode" class="lesson-section" data-section-title="Pseudocode">
+            <h2>10. Pseudocode</h2>
+            <pre class="code-block"><code>WHEN browser requests product page
+    resolve website domain
+    connect securely to server
+    send HTTP request
+
+    web server forwards request to application
+
+    application finds requested product
+    application asks database for product information
+
+    IF product exists
+        build product page response
+        return successful response
+    ELSE
+        return product not found response
+
+    browser renders returned page
+END</code></pre>
+          </section>
+
+          <section id="atlas-commerce-example" class="lesson-section" data-section-title="Atlas Commerce">
+            <h2>11. Atlas Commerce Example</h2>
+            <p>For a product page, Atlas Commerce may load product details, image metadata, current price, stock information, review summaries, and related products. Some of this content may be cached so the application avoids repeating expensive work for every visitor.</p>
+            <div class="callout atlas-callout"><strong>Atlas Commerce:</strong> a product page should be fast, accurate, and observable when one downstream system slows down.</div>
+          </section>
+
+          <section id="how-senior-engineers-think" class="lesson-section" data-section-title="Senior Engineers">
+            <h2>12. How Senior Engineers Think</h2>
+            <div class="callout senior-note">
+              <p>Every network request can fail. External services add latency. Database queries should be measured. Not every request should perform expensive work. Logs and monitoring must help trace failures. Caching may improve speed but introduces stale-data risks.</p>
+            </div>
+          </section>
+
+          <section id="common-mistakes" class="lesson-section" data-section-title="Common Mistakes">
+            <h2>13. Common Mistakes</h2>
+            <ul>
+              <li>Assuming the browser connects directly to the database.</li>
+              <li>Thinking DNS happens inside the application.</li>
+              <li>Confusing HTTP with HTML.</li>
+              <li>Ignoring timeouts and failed responses.</li>
+              <li>Treating every slow page as a frontend problem.</li>
+            </ul>
+          </section>
+
+          <section id="debugging-guide" class="lesson-section" data-section-title="Debugging Guide">
+            <h2>14. Debugging Guide</h2>
+            <ul class="check-list">
+              <li>Confirm the domain resolves.</li>
+              <li>Confirm the server is reachable.</li>
+              <li>Inspect the browser network panel.</li>
+              <li>Check the HTTP status code.</li>
+              <li>Check web server, application, and database logs.</li>
+              <li>Measure slow queries and external services.</li>
+            </ul>
+            <pre class="code-block"><code>nslookup example.com
+ping example.com
+curl -I https://example.com</code></pre>
+            <p><code>nslookup</code> checks name resolution. <code>ping</code> checks basic reachability when allowed. <code>curl -I</code> requests response headers and status information.</p>
+          </section>
+
+          <section id="security-considerations" class="lesson-section" data-section-title="Security">
+            <h2>15. Security Considerations</h2>
+            <p>HTTPS protects data in transit. User input must be validated. Authorization must protect private records. Error responses should avoid sensitive details. Browsers and servers should use secure defaults.</p>
+          </section>
+
+          <section id="performance-notes" class="lesson-section" data-section-title="Performance">
+            <h2>16. Performance Notes</h2>
+            <p>Request speed can be shaped by DNS lookup time, network latency, server processing, database query time, caching, CDN usage, and image optimization. Engineers improve performance by measuring each part before guessing.</p>
+          </section>
+
+          <section id="production-notes" class="lesson-section" data-section-title="Production">
+            <h2>17. Production Notes</h2>
+            <p>In production, the flow may include a CDN, load balancer, reverse proxy, application server, cache, database, and external services. Beginners do not need to memorize every component; they should learn what responsibility each layer owns.</p>
+          </section>
+
+          <section id="ai-prompt-examples" class="lesson-section" data-section-title="AI Prompts">
+            <h2>18. AI Prompt Examples</h2>
+            <div class="prompt-grid">
+              <div><h3>Poor prompt</h3><pre class="code-block"><code>Fix my slow website.</code></pre></div>
+              <div><h3>Better prompt</h3><pre class="code-block"><code>Help me investigate why an e-commerce product page takes four seconds to load.
+
+The browser network panel shows the main HTML request takes 3.5 seconds.
+Static images load quickly.
+The application uses a relational database.
+
+Give me a step-by-step investigation plan.
+Do not assume the cause.
+Explain what measurements I should collect first.</code></pre></div>
+            </div>
+            <p>The improved prompt gives context, observations, constraints, and an investigation goal. It asks the AI to reason before diagnosing.</p>
+          </section>
+
+          <section id="mini-challenge" class="lesson-section" data-section-title="Mini Challenge">
+            <h2>19. Mini Challenge</h2>
+            <div class="challenge" data-mini-challenge>
+              <p>An Atlas Commerce product page returns a <code>500</code> status code, but images and CSS still load. Which system is most likely failing?</p>
+              <div class="answer-grid">
+                <button type="button" data-answer="DNS">DNS</button>
+                <button type="button" data-answer="Browser rendering">Browser rendering</button>
+                <button type="button" data-answer="Application logic">Application logic</button>
+                <button type="button" data-answer="Customer internet connection">Customer internet connection</button>
+              </div>
+              <p class="feedback" data-challenge-feedback aria-live="polite"></p>
+            </div>
+          </section>
+
+          <section id="quiz" class="lesson-section" data-section-title="Quiz">
+            <h2>20. Quiz</h2>
+            <div class="quiz" data-quiz></div>
+          </section>
+
+          <section id="summary" class="lesson-section" data-section-title="Summary">
+            <h2>21. Summary</h2>
+            <p>An HTTP request begins in the browser, finds a destination through DNS, connects securely, reaches a web server, may trigger application and database work, then returns a response the browser can render.</p>
+          </section>
+
+          <section id="related-lessons" class="lesson-section" data-section-title="Related Lessons">
+            <h2>22. Related Lessons</h2>
+            <div class="related-grid">
+              <a href="lesson.html?lesson=dns-fundamentals">DNS Fundamentals</a>
+              <a href="lesson.html?lesson=http-methods-status-codes">HTTP Methods and Status Codes</a>
+              <a href="lesson.html?lesson=clients-and-servers">Clients and Servers</a>
+              <a href="lesson.html?lesson=browser-rendering">How Browsers Render Pages</a>
+              <a href="lesson.html?lesson=reverse-proxies-nginx">Reverse Proxies and Nginx</a>
+            </div>
+          </section>
+
+          <section id="official-resources" class="lesson-section" data-section-title="Resources">
+            <h2>23. Official Resources</h2>
+            <ul>
+              <li>MDN Web Docs - HTTP</li>
+              <li>Cloudflare Learning Center - DNS</li>
+              <li>RFC documentation - HTTP semantics</li>
+            </ul>
+          </section>
+
+          <nav class="prev-next" aria-label="Previous and next lessons">
+            <a class="button button-secondary" href="lesson.html?lesson=clients-and-servers">Previous: Clients and Servers</a>
+            <a class="button button-primary" href="lesson.html?lesson=ai-coding-assistants">Next: AI Coding Assistants</a>
+          </nav>
+        </article>
+      </main>
+
+      <aside class="lesson-toc" aria-label="On this page">
+        <h2>On this page</h2>
+        <div data-section-progress class="section-progress"></div>
+        <nav data-toc></nav>
+      </aside>
+    </div>
+
+    <script src="data/curriculum.js" defer></script>
+    <script src="data/sample-lessons.js" defer></script>
+    <script src="data/lessons/what-a-computer-actually-does.js" defer></script>
+    <script src="data/lessons/hardware-and-software.js" defer></script>
+    <script src="data/lessons/cpu-memory-and-storage.js" defer></script>
+    <script src="data/lessons/files-folders-and-data.js" defer></script>
+    <script src="data/lessons/processes-applications-and-services.js" defer></script>
+    <script src="data/lessons/local-computers-and-remote-servers.js" defer></script>
+    <script src="data/lessons/how-an-http-request-works.js" defer></script>
+    <script src="data/lessons/phase4-terminal-lessons.js" defer></script>
+    <script src="data/lessons/phase5-git-lessons.js" defer></script>
+    <script src="js/curriculum-data.js" defer></script>
+    <script src="js/curriculum-validator.js" defer></script>
+    <script src="js/storage.js" defer></script>
+    <script src="js/sidebar.js" defer></script>
+    <script src="js/lesson-renderer.js" defer></script>
+    <script src="js/lesson-loader.js" defer></script>
+    <script src="js/progress.js" defer></script>
+    <script src="js/lesson.js" defer></script>
+    <script src="js/navigation.js" defer></script>
+    <script src="js/app.js" defer></script>
+  </body>
+</html>

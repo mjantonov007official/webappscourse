@@ -1,0 +1,227 @@
+.quick-list, .bookmark-list {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.quick-list-item {
+  display: grid;
+  gap: 0.18rem;
+  min-width: 0;
+  padding: 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text-primary);
+}
+
+.quick-list-item span {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.interactive-card, .accordion-card, .comparison-explorer, .decision-scenario,
+.terminal-block, .pseudocode-walkthrough, .observation-lab {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.accordion-trigger {
+  width: 100%;
+  padding: 0.75rem;
+  border: 0;
+  background: transparent;
+  color: var(--text-primary);
+  font-weight: 700;
+  text-align: left;
+}
+
+.accordion-panel {
+  padding: 0 0.75rem 0.75rem;
+  color: var(--text-secondary);
+}
+
+.step-count, .copy-status, .warning-note {
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+}
+
+.step-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.comparison-table {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+}
+
+.comparison-table th, .comparison-table td {
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.comparison-table th {
+  color: var(--text-primary);
+  background: var(--background);
+}
+
+.terminal-block .code-block, .pseudocode-walkthrough .code-block {
+  margin: 0;
+}
+
+.lab-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.reusable-diagram.hub .diagram-arrow {
+  font-size: 0.78rem;
+}
+
+.button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.platform-list, .risk-labels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.risk-label {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0.18rem 0.55rem;
+  border: 1px solid var(--warning);
+  border-radius: 999px;
+  color: var(--text-primary);
+  background: var(--warning-soft);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.command-anatomy {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.anatomy-token, .table-sort {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--background);
+  color: var(--text-primary);
+  text-align: left;
+}
+
+.anatomy-token {
+  padding: 0.65rem;
+}
+
+.table-sort {
+  width: 100%;
+  padding: 0.2rem 0;
+  border: 0;
+  background: transparent;
+  font-weight: 800;
+}
+
+.match-explorer {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.match-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(180px, 0.55fr);
+  gap: 0.65rem;
+  align-items: center;
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--background);
+}
+
+.match-row select {
+  width: 100%;
+  padding: 0.55rem;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text-primary);
+}
+
+.simulated-output {
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: pre;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: #080b0f;
+  color: var(--text-primary);
+  line-height: 1.55;
+}
+
+.terminal-state {
+  margin: 0;
+  color: var(--accent);
+  font-weight: 800;
+}
+
+.comparison-table tr.selected td {
+  background: var(--accent-soft);
+}
+
+.command-glossary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.command-card {
+  display: grid;
+  gap: 0.75rem;
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.command-card-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+}
+
+.command-card code {
+  color: var(--accent-hover);
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+@media (max-width: 700px) {
+  .match-row, .command-glossary {
+    grid-template-columns: 1fr;
+  }
+
+  .command-card-header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}
