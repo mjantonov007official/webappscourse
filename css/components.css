@@ -139,9 +139,10 @@
   padding: 1rem;
   border: 0;
   border-bottom: 1px solid var(--border);
-  background: var(--surface);
+  background: linear-gradient(90deg, rgba(88, 166, 255, 0.14), var(--surface) 46%);
   color: var(--text-primary);
   text-align: left;
+  font-weight: 800;
 }
 .lesson-list { display: grid; gap: 0; }
 .lesson-row {
@@ -159,7 +160,7 @@
   padding: 0.85rem 1rem;
   border: 0;
   border-bottom: 1px solid var(--border);
-  background: var(--background);
+  background: linear-gradient(90deg, rgba(188, 140, 255, 0.12), var(--background) 44%);
   color: var(--text-primary);
   text-align: left;
   font-weight: 700;
@@ -167,12 +168,34 @@
 .lesson-row-main { min-width: 0; }
 .lesson-row-summary { margin: 0.35rem 0 0.65rem; }
 .lesson-title-line { display: flex; gap: 0.55rem; align-items: center; color: var(--text-primary); }
-.state-dot { color: var(--text-muted); }
-.state-dot.complete { color: var(--success); }
-.state-dot.current { color: var(--accent); }
-.state-dot.planned { color: var(--warning); }
-.state-dot.in-progress { color: var(--accent); }
-.state-dot.completed { color: var(--success); }
+.state-dot {
+  display: inline-grid;
+  place-items: center;
+  width: 1.15rem;
+  height: 1.15rem;
+  border-radius: 999px;
+  color: var(--text-muted);
+  background: rgba(139, 148, 158, 0.14);
+  font-size: 0.82rem;
+  font-weight: 900;
+}
+.state-dot.complete, .state-dot.completed {
+  color: #06130a;
+  background: var(--success);
+}
+.state-dot.current, .state-dot.in-progress {
+  color: #06111f;
+  background: var(--blue);
+}
+.state-dot.planned {
+  color: #1f1300;
+  background: var(--warning);
+}
+.state-dot.not-started {
+  color: var(--text-secondary);
+  border: 1px solid var(--border-light);
+  background: var(--background);
+}
 .lesson-meta-list {
   display: flex;
   flex-wrap: wrap;
@@ -184,12 +207,17 @@
   align-items: center;
   min-height: 26px;
   padding: 0.18rem 0.5rem;
-  border: 1px solid var(--border);
+  border: 1px solid var(--cyan);
   border-radius: 999px;
-  color: var(--text-secondary);
-  background: var(--background);
+  color: var(--text-primary);
+  background: var(--cyan-soft);
   font-size: 0.78rem;
+  font-weight: 700;
 }
+.topic-chip:nth-child(4n+1) { border-color: var(--cyan); background: var(--cyan-soft); }
+.topic-chip:nth-child(4n+2) { border-color: var(--violet); background: var(--violet-soft); }
+.topic-chip:nth-child(4n+3) { border-color: var(--orange); background: var(--orange-soft); }
+.topic-chip:nth-child(4n+4) { border-color: var(--pink); background: var(--pink-soft); }
 .roadmap-note {
   margin-top: 1rem;
   padding: 1rem;
@@ -198,6 +226,36 @@
   background: var(--surface);
   color: var(--text-secondary);
 }
+.status-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 0.8rem;
+}
+.status-legend > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 32px;
+  padding: 0.25rem 0.65rem;
+  border: 1px solid var(--border-light);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text-primary);
+  font-size: 0.84rem;
+  font-weight: 800;
+}
+.legend-swatch {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 999px;
+  background: var(--text-muted);
+}
+.legend-complete { background: var(--success); }
+.legend-planned { background: var(--warning); }
+.legend-progress { background: var(--blue); }
+.legend-topic { background: var(--pink); }
+.legend-git { background: var(--violet); }
 .curriculum-controls {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(320px, 0.9fr);
@@ -234,8 +292,12 @@
   padding: 0.2rem 0.55rem;
   border: 1px solid var(--border);
   border-radius: 999px;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   background: var(--background);
+}
+.filter-grid label:has(input:checked) {
+  border-color: var(--accent);
+  background: var(--accent-soft);
 }
 .result-count { margin: 0.65rem 0 0; }
 .empty-state {
@@ -278,6 +340,47 @@
   color: var(--text-secondary);
   background: var(--surface);
   font-size: 0.84rem;
+  font-weight: 800;
+}
+.badge-status-complete {
+  border-color: var(--success);
+  color: var(--text-primary);
+  background: var(--success-soft);
+}
+.badge-status-planned {
+  border-color: var(--warning);
+  color: var(--text-primary);
+  background: var(--warning-soft);
+}
+.badge-difficulty-beginner {
+  border-color: var(--success);
+  color: var(--text-primary);
+  background: var(--success-soft);
+}
+.badge-difficulty-intermediate {
+  border-color: var(--orange);
+  color: var(--text-primary);
+  background: var(--orange-soft);
+}
+.badge-difficulty-advanced {
+  border-color: var(--pink);
+  color: var(--text-primary);
+  background: var(--pink-soft);
+}
+.badge-time {
+  border-color: var(--blue);
+  color: var(--text-primary);
+  background: var(--blue-soft);
+}
+.badge-terminal {
+  border-color: var(--cyan);
+  color: var(--text-primary);
+  background: var(--cyan-soft);
+}
+.badge-git {
+  border-color: var(--violet);
+  color: var(--text-primary);
+  background: var(--violet-soft);
 }
 .modal-backdrop {
   position: fixed;

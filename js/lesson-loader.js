@@ -8,6 +8,15 @@
     document.querySelectorAll(selector).forEach(function (node) { node.textContent = text; });
   }
 
+  function updateMetaBadges(lesson) {
+    document.querySelectorAll("[data-dynamic-difficulty]").forEach(function (node) {
+      node.className = "badge badge-difficulty-" + lesson.difficulty;
+    });
+    document.querySelectorAll("[data-dynamic-time]").forEach(function (node) {
+      node.className = "badge badge-time";
+    });
+  }
+
   function renderPlannedLesson(lesson) {
     document.body.dataset.lessonId = lesson.id;
     document.title = lesson.title + " - Engineering Handbook";
@@ -17,6 +26,7 @@
     setText("[data-dynamic-chapter]", lesson.chapterTitle);
     setText("[data-dynamic-difficulty]", lesson.difficulty);
     setText("[data-dynamic-time]", window.CurriculumData.formatMinutes(lesson.estimatedMinutes));
+    updateMetaBadges(lesson);
     var content = document.querySelector(".lesson-content");
     if (!content) return;
     content.textContent = "";
@@ -168,6 +178,7 @@
     setText("[data-dynamic-chapter]", lesson.chapterTitle);
     setText("[data-dynamic-difficulty]", lesson.difficulty);
     setText("[data-dynamic-time]", window.CurriculumData.formatMinutes(lesson.estimatedMinutes));
+    updateMetaBadges(lesson);
     window.HandbookStorage.updateLesson(lesson.id, { progress: window.HandbookStorage.getLesson(lesson.id).progress || 0 });
     if (lesson.status === "planned") {
       renderPlannedLesson(lesson);

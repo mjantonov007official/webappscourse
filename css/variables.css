@@ -11,6 +11,16 @@
   --accent: #58a6ff;
   --accent-hover: #79c0ff;
   --accent-soft: rgba(88, 166, 255, 0.12);
+  --blue: #58a6ff;
+  --blue-soft: rgba(88, 166, 255, 0.16);
+  --cyan: #39c5cf;
+  --cyan-soft: rgba(57, 197, 207, 0.16);
+  --violet: #bc8cff;
+  --violet-soft: rgba(188, 140, 255, 0.16);
+  --pink: #ff7bcb;
+  --pink-soft: rgba(255, 123, 203, 0.16);
+  --orange: #ffa657;
+  --orange-soft: rgba(255, 166, 87, 0.16);
   --success: #3fb950;
   --success-soft: rgba(63, 185, 80, 0.12);
   --warning: #d29922;

@@ -57,6 +57,10 @@
     });
   }
 
+  function badge(text, className) {
+    return create("span", "badge " + (className || ""), text);
+  }
+
   function renderLessonRow(lesson, progress) {
     var row = create("div", "lesson-row curriculum-lesson-row");
     row.dataset.status = lesson.status;
@@ -68,13 +72,13 @@
     title.append(stateDot, create("strong", "", lesson.title));
     var summary = create("p", "lesson-row-summary", lesson.summary);
     var meta = create("div", "lesson-meta-list");
-    [lesson.status === "complete" ? "Complete content" : "Planned", lesson.difficulty, window.CurriculumData.formatMinutes(lesson.estimatedMinutes)].forEach(function (item) {
-      meta.appendChild(create("span", "badge", item));
-    });
+    meta.appendChild(badge(lesson.status === "complete" ? "Complete content" : "Planned", lesson.status === "complete" ? "badge-status-complete" : "badge-status-planned"));
+    meta.appendChild(badge(lesson.difficulty, "badge-difficulty-" + lesson.difficulty));
+    meta.appendChild(badge(window.CurriculumData.formatMinutes(lesson.estimatedMinutes), "badge-time"));
     if (lesson.status === "complete" && window.LessonContentRegistry && window.LessonContentRegistry[lesson.slug] && window.LessonContentRegistry[lesson.slug].terminalCommands) {
-      meta.appendChild(create("span", "badge", "Terminal commands"));
+      meta.appendChild(badge("Terminal commands", "badge-terminal"));
       if (window.LessonContentRegistry[lesson.slug].terminalCommands.some(function (command) { return command.command.indexOf("git ") === 0; })) {
-        meta.appendChild(create("span", "badge", "Git lesson"));
+        meta.appendChild(badge("Git lesson", "badge-git"));
       }
     }
     lesson.topics.slice(0, 4).forEach(function (topic) { meta.appendChild(create("span", "topic-chip", topic)); });
